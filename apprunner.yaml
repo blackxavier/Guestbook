@@ -1,7 +1,5 @@
 version: 1.0
-environment:
-  variables:
-    DJANGO_SETTINGS_MODULE: guestbook.settings
+
 runtime: python3
 
 
