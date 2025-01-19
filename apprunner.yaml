@@ -1,18 +1,19 @@
 version: 1.0
-
-# Define the runtime environment
+environment:
+  variables:
+    DJANGO_SETTINGS_MODULE: guestbook.settings
 runtime: python3
 
-# Define the build and deployment steps
+
 build:
   commands:
-    # Install dependencies
+    - pip install --upgrade pip
     - pip install -r requirements.txt
-    # Collect static files
     - python manage.py collectstatic --noinput
-    # Run database migrations
     - python manage.py migrate
 
-# Define the start command for the application
+
+
 run:
+  port: 8000
   command: gunicorn guestbook.wsgi:application --bind 0.0.0.0:8000
