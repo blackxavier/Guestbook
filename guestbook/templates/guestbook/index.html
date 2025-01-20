@@ -1,4 +1,8 @@
 {% load static %}
+<script
+  src="https://js.sentry-cdn.com/452e5141e1bd0e7697dce36a0ee31260.min.js"
+  crossorigin="anonymous"
+></script>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,6 +33,14 @@
         <h1>Guest Book</h1>
         <a type="button" class="btn btn-link" href="{% url 'sign' %}">Sign the Guest Book</a>
       </div>
+      <!-- A button to trigger a test error -->
+<button id="test-error">Trigger Test Error</button>
+<script>
+  const button = document.getElementById('test-error');
+  button.addEventListener('click', () => {
+    throw new Error('This is a test error');
+  });
+</script>
       {% if comments %}
       {% for comment in comments %}
       <div class="page-header">
